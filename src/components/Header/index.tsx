@@ -1,9 +1,26 @@
+"use client";
 import Link from "next/link";
-import { header, logo, nav, navLink } from "./index.css";
+import { header, logo, nav, navLink, active } from "./index.css";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      if (scrollY > 0 && !isScrolled) {
+        setIsScrolled(true);
+      } else if (scrollY === 0 && isScrolled) {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isScrolled]);
   return (
-    <header className={header}>
+    <header className={[header, isScrolled ? active : ""].join(" ")}>
       <Link href={"/"} className={logo} />
       <nav className={nav}>
         <a href="#" className={navLink}>

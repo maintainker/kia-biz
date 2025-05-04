@@ -8,6 +8,7 @@ export const header = style({
   backgroundColor: "#fff",
   position: "sticky",
   height: "80px",
+  top: "0",
 });
 
 export const logo = style({
@@ -31,4 +32,8 @@ export const navLink = style({
   textDecoration: "none",
   fontWeight: "600",
   margin: "0 16px",
+});
+
+export const active = style({
+  boxShadow: "0 4px 32px 0 rgba(0,0,0,.08)",
 });
