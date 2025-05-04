@@ -18,6 +18,7 @@
         "name": "next"
       }
     ],
+    "types": ["@vanilla-extract/css/global"],
     "paths": {
       "@/*": ["./src/*"]
     }
