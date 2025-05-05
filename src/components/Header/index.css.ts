@@ -9,6 +9,7 @@ export const header = style({
   position: "sticky",
   height: "80px",
   top: "0",
+  zIndex: 100,
 });
 
 export const logo = style({

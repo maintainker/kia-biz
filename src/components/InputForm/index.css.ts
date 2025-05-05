@@ -17,6 +17,7 @@ export const input = style({
   outline: "none",
   height: "56px",
   paddingLeft: "16px",
+  background: "#fff",
 });
 
 export const submitIcon = style({
