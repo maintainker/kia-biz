@@ -1,8 +1,7 @@
-import { FilterType, TabType } from "@/components";
+import { TabType } from "@/components";
 import HomeTemplate from "@/templates/HomeTemplate";
 
 type TabKey = "CONSULT" | "USAGE";
-type FilterKey = "product" | "counseling" | "contract";
 
 const tabs: TabType<TabKey>[] = [
   {
