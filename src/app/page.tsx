@@ -15,22 +15,8 @@ const tabs: TabType<TabKey>[] = [
   },
 ];
 
-const filters: FilterType<FilterKey>[] = [
-  {
-    children: "서비스 상품",
-    key: "product",
-  },
-  {
-    children: "도입 상담",
-    key: "counseling",
-  },
-  {
-    children: "계약",
-    key: "contract",
-  },
-];
 export default function Home() {
-  return <HomeTemplate tabs={tabs} filters={filters} />;
+  return <HomeTemplate tabs={tabs} />;
 }
 
 export const metadata = {
