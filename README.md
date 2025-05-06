@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kia FAQ 페이지 Clone
 
-## Getting Started
-
-First, run the development server:
+## 실행법
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+위 명령어를 터미널에 실행후 [http://localhost:3000](http://localhost:3000)를 브라우저에 오픈
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 구현 페이지
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+[https://spiffy-platypus-cc0708.netlify.app/](https://spiffy-platypus-cc0708.netlify.app/)
 
-## Learn More
+## 아쉬운점
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 변수 특정을 하나하나 하지 못해 태블릿과 모바일 반응형을 못하였습니다.
+- 모든 페이지 기획을 알지 못하여 더 숨어있는 케이스들을 전부 적용을 하지 못하였습니다.
