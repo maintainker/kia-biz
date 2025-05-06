@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { tabContainer, tab, activeTab } from "./index.css";
 
 export interface TabType<T = string> {

@@ -55,13 +55,6 @@ const useageCategory = [
   name: string;
 }[];
 
-const categoryMap = {
-  USAGE: "도입문의",
-  CONSULT: "가입문의",
-  PRODUCT: "서비스 상품",
-  COUNSELING: "도입 상담",
-  CONTRACT: "계약",
-} as const;
 export type TabType = "USAGE" | "CONSULT";
 export type FaqCategoryType =
   | "PRODUCT"

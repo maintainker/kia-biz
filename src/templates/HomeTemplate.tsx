@@ -1,7 +1,6 @@
 "use client";
 import {
   AccordionList,
-  FilterType,
   FilterList,
   Header,
   ProcessInfo,
@@ -28,11 +27,7 @@ import {
 import { useEffect, useState } from "react";
 import InputForm from "@/components/InputForm";
 import Link from "next/link";
-import {
-  useGetFilterItemsQuery,
-  useGetFnqInfiniteQuery,
-  useGetFnqQuery,
-} from "@/apis";
+import { useGetFilterItemsQuery, useGetFnqInfiniteQuery } from "@/apis";
 import { FaqCategoryType } from "@/mockApi/mockData";
 import { AccordionItem } from "@/components/AccordionList";
 
