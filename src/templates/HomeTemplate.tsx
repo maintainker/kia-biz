@@ -25,11 +25,16 @@ import {
   buttonContent,
   kakaoId,
 } from "./index.css";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import InputForm from "@/components/InputForm";
 import Link from "next/link";
-import { useGetFilterItemsQuery, useGetFnqQuery } from "@/apis";
+import {
+  useGetFilterItemsQuery,
+  useGetFnqInfiniteQuery,
+  useGetFnqQuery,
+} from "@/apis";
 import { FaqCategoryType } from "@/mockApi/mockData";
+import { AccordionItem } from "@/components/AccordionList";
 
 type TabKey = "CONSULT" | "USAGE";
 
@@ -52,7 +57,11 @@ const HomeTemplate = ({ tabs }: Props) => {
     undefined | number
   >();
 
-  const { data: faqData } = useGetFnqQuery({
+  const {
+    data: faqData,
+    isLoading,
+    fetchNextPage,
+  } = useGetFnqInfiniteQuery({
     tab: activeTabKey,
     question: searchKeyword,
     faqCategoryID: filterActiveKey === "all" ? undefined : filterActiveKey,
@@ -65,6 +74,7 @@ const HomeTemplate = ({ tabs }: Props) => {
 
   const handleClickTab = (key: TabKey) => {
     setActiveTabKey(key);
+    setFilterActiveKey("all");
   };
   const handleClickFilter = (key: FaqCategoryType | "all") => {
     setFilterActiveKey(key);
@@ -114,14 +124,26 @@ const HomeTemplate = ({ tabs }: Props) => {
         <AccordionList<number>
           onClick={(key) => setActiveAccordionKey(key)}
           activeKey={activeAccordionKey}
-          items={(faqData?.items || []).map((el) => {
-            return {
-              key: el.id,
-              question: el.question,
-              category: el.subCategoryName,
-              body: el.answer,
-            };
-          })}
+          isLoading={isLoading}
+          hasNextpage={
+            (faqData?.pages[faqData.pages.length - 1].pageInfo.nextOffset ||
+              0) <
+            (faqData?.pages[faqData.pages.length - 1].pageInfo.totalRecord || 0)
+          }
+          onNextClick={fetchNextPage}
+          items={(faqData?.pages || []).reduce((prev, curr) => {
+            return [
+              ...prev,
+              ...curr.items.map((el) => {
+                return {
+                  key: el.id,
+                  question: el.question,
+                  category: el.subCategoryName,
+                  body: el.answer,
+                };
+              }),
+            ];
+          }, [] as AccordionItem<number>[])}
         />
         <div>
           <h2 className={sectionTitle}>서비스 문의</h2>

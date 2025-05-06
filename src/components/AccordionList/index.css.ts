@@ -76,3 +76,69 @@ export const answerContainer = style({
     },
   },
 });
+
+export const noData = style({
+  width: "100%",
+  padding: "160px 0",
+  alignItems: "center",
+  gap: "16px",
+  color: "#697278",
+  lineHeight: "1.6",
+  fontSize: "18px",
+  borderBottom: "1px solid #e6e8e9",
+  "::before": {
+    content: "''",
+    display: "block",
+    background: "url(/icon/ic_nodata.svg)",
+    backgroundSize: "auto 100%",
+    width: "56px",
+    height: "56px",
+  },
+});
+export const loadingView = style({
+  width: "100%",
+  padding: "180px 0",
+  borderBottom: "1px solid #e6e8e9",
+});
+
+export const moreButton = style({
+  height: "56px",
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: "32px",
+  gap: "4px",
+  background: "none",
+  border: 0,
+  cursor: "pointer",
+  fontSize: "18px",
+});
+export const plusIcon = style({
+  position: "relative",
+  height: "14px",
+  width: "14px",
+  top: "-1px",
+  "::before": {
+    content: "''",
+    width: "2px",
+    background: "#000",
+    height: "100%",
+    display: "block",
+    position: "absolute",
+    top: 0,
+    left: "50%",
+    transform: "translateX(-50%)",
+  },
+  "::after": {
+    content: "''",
+    background: "#000",
+    width: "100%",
+    height: "2px",
+    display: "block",
+    position: "absolute",
+    left: 0,
+    top: "50%",
+    transform: "translateY(-50%)",
+  },
+});

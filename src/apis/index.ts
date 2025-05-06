@@ -1,5 +1,5 @@
 import { getFilterItems, getQnaList } from "@/mockApi/mockData";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
 type TabType = "USAGE" | "CONSULT";
 type FaqCategoryType =
@@ -55,6 +55,34 @@ export const useGetFnqQuery = ({
   });
 };
 
+export const useGetFnqInfiniteQuery = ({
+  tab,
+  question,
+  faqCategoryID,
+}: Omit<GetFnqParam, "offset">) => {
+  return useInfiniteQuery<QnaListResponse, Error>({
+    queryKey: ["fnq", tab, question, faqCategoryID],
+    queryFn: ({ pageParam = 0 }) =>
+      getQnaList({
+        tab,
+        question,
+        faqCategoryID,
+        offset: pageParam as number,
+      }),
+    getNextPageParam: (lastPage) => {
+      return lastPage.pageInfo.nextOffset < lastPage.pageInfo.totalRecord
+        ? lastPage.pageInfo.nextOffset
+        : undefined;
+    },
+    getPreviousPageParam: (firstPage) => {
+      return firstPage.pageInfo.prevOffset >= 0
+        ? firstPage.pageInfo.prevOffset
+        : undefined;
+    },
+    staleTime: 5 * 60 * 1000,
+    initialPageParam: 0,
+  });
+};
 export const useGetFilterItemsQuery = (tab: TabType) => {
   return useQuery<CategoryItem[], Error>({
     queryKey: ["fnq", tab],
