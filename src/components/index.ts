@@ -7,3 +7,4 @@ export * from "./Filter";
 export { default as AccordionList } from "./AccordionList";
 export { default as ProcessInfo } from "./ProcessInfo";
 export { default as AppLink } from "./Applink";
+export { default as Footer } from "./Footer";

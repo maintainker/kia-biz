@@ -1,4 +1,4 @@
-import { FormEvent, InputHTMLAttributes } from "react";
+import { FormEvent, InputHTMLAttributes, useRef } from "react";
 import {
   inputForm,
   input,
@@ -8,22 +8,27 @@ import {
 } from "./index.css";
 
 interface Props {
-  onSubmit: (e: FormEvent) => void;
+  onSearchSubmit: (e: FormEvent, value?: string) => void;
   onClear?: () => void;
 }
 
 const InputForm = ({
-  onSubmit,
+  onSearchSubmit,
   className,
   onClear,
   value,
   ...props
-}: Props & InputHTMLAttributes<HTMLInputElement>) => {
+}: InputHTMLAttributes<HTMLInputElement> & Props) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const handleSubmit = (e: FormEvent) => {
+    onSearchSubmit?.(e, inputRef.current?.value);
+  };
   return (
-    <form className={inputForm} onSubmit={onSubmit}>
+    <form className={inputForm} onSubmit={handleSubmit}>
       <input
         {...props}
         value={value}
+        ref={inputRef}
         className={[input, className ?? ""].join("")}
       />
       <button
